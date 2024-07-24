@@ -108,7 +108,7 @@ class DemoNavbar extends React.Component {
                   <NavItem>
                     <NavLink
                       className="nav-link-icon"
-                      href="https://www.facebook.com/creativetim"
+                    
                       id="tooltip333589074"
                       target="_blank"
                     >
@@ -124,7 +124,7 @@ class DemoNavbar extends React.Component {
                   <NavItem>
                     <NavLink
                       className="nav-link-icon"
-                      href="https://www.instagram.com/creativetimofficial"
+                     
                       id="tooltip356693867"
                       target="_blank"
                     >
@@ -156,7 +156,7 @@ class DemoNavbar extends React.Component {
                   <NavItem>
                     <NavLink
                       className="nav-link-icon"
-                      href="https://github.com/creativetimofficial/argon-design-system-react"
+                     
                       id="tooltip112445449"
                       target="_blank"
                     >
@@ -173,14 +173,14 @@ class DemoNavbar extends React.Component {
                     <Button
                       className="btn-neutral btn-icon"
                       color="default"
-                      href="https://www.creative-tim.com/product/argon-design-system-react?ref=adsr-navbar"
+                    
                       target="_blank"
                     >
                       <span className="btn-inner--icon">
                         <i className="fa fa-cloud-download mr-2" />
                       </span>
                       <span className="nav-link-inner--text ml-1">
-                        Download
+                        Download App
                       </span>
                     </Button>
                   </NavItem>
