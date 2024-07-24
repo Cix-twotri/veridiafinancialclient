@@ -22,6 +22,9 @@ import { BiMoneyWithdraw } from "react-icons/bi";
 import { TbFolder } from "react-icons/tb";
 import styled from "styled-components";
 import { AuthContext } from "../../context/authContext.jsx";
+import ArgonWhite from "../../assets/img/brand/argon-react-white.png";
+import Argon from "../../assets/img/brand/argon-react.png";
+import Creativetim from "../../assets/img/brand/creativetim-white-slim.png";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -74,7 +77,7 @@ const DemoNavbar = () => {
             <NavbarBrand className="mr-lg-5" to="/" tag={Link}>
               <img
                 alt="..."
-                src={require("assets/img/brand/argon-react-white.png")}
+                src={ArgonWhite}
               />
             </NavbarBrand>
             <button className="navbar-toggler" id="navbar_global">
@@ -93,7 +96,7 @@ const DemoNavbar = () => {
                     <Link to="/">
                       <img
                         alt="..."
-                        src={require("assets/img/brand/argon-react.png")}
+                        src={Argon}
                       />
                     </Link>
                   </Col>

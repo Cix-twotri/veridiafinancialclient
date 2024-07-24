@@ -19,6 +19,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 // JavaScript plugin that hides or shows a component based on your scroll
 import Headroom from "headroom.js";
+import Argon from "../../assets/img/brand/argon-react.png";
+import ArgonWhite from "../../assets/img/brand/argon-react-white.png";
+
 // reactstrap components
 import {
   Button,
@@ -73,10 +76,7 @@ class DemoNavbar extends React.Component {
           >
             <Container>
               <NavbarBrand className="mr-lg-5" to="/" tag={Link}>
-                <img
-                  alt="..."
-                  src={require("assets/img/brand/argon-react-white.png")}
-                />
+                <img alt="..." src={ArgonWhite} />
               </NavbarBrand>
               <button className="navbar-toggler" id="navbar_global">
                 <span className="navbar-toggler-icon" />
@@ -92,10 +92,7 @@ class DemoNavbar extends React.Component {
                   <Row>
                     <Col className="collapse-brand" xs="6">
                       <Link to="/">
-                        <img
-                          alt="..."
-                          src={require("assets/img/brand/argon-react.png")}
-                        />
+                        <img alt="..." src={Argon} />
                       </Link>
                     </Col>
                     <Col className="collapse-close" xs="6">
@@ -106,7 +103,7 @@ class DemoNavbar extends React.Component {
                     </Col>
                   </Row>
                 </div>
-                
+
                 <Nav className="align-items-lg-center ml-lg-auto" navbar>
                   <NavItem>
                     <NavLink

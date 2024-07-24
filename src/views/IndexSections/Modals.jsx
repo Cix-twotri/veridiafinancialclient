@@ -126,7 +126,7 @@ class Modals extends React.Component {
             >
               <div className="modal-header">
                 <h6 className="modal-title" id="modal-title-notification">
-                  Your attention is required
+                  Your attention is Needed
                 </h6>
                 <button
                   aria-label="Close"
@@ -195,7 +195,7 @@ class Modals extends React.Component {
                         <span className="btn-inner--icon mr-1">
                           <img
                             alt="..."
-                            src={require("assets/img/icons/common/github.svg")}
+                            src={Argon}
                           />
                         </span>
                         <span className="btn-inner--text">Github</span>
@@ -209,7 +209,7 @@ class Modals extends React.Component {
                         <span className="btn-inner--icon mr-1">
                           <img
                             alt="..."
-                            src={require("assets/img/icons/common/google.svg")}
+                            src={Google}
                           />
                         </span>
                         <span className="btn-inner--text">Google</span>

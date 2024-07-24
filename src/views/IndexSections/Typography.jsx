@@ -16,6 +16,10 @@
 
 */
 import React from "react";
+import TeamOne from "../../assets/img/theme/team-1-800x800.jpg";
+import TeamTwo from "../../assets/img/theme/team-2-800x800.jpg";
+import TeamThree from "../../assets/img/theme/team-3-800x800.jpg";
+import TeamFour from "../../assets/img/theme/team-4-800x800.jpg";
 
 // reactstrap components
 import { Row, Col } from "reactstrap";
@@ -315,7 +319,7 @@ class Typography extends React.Component {
             <img
               alt="..."
               className="img-fluid rounded shadow"
-              src={require("assets/img/theme/team-1-800x800.jpg")}
+              src={TeamOne}
               style={{ width: "150px" }}
             />
           </Col>
@@ -326,7 +330,7 @@ class Typography extends React.Component {
             <img
               alt="..."
               className="img-fluid rounded-circle shadow"
-              src={require("assets/img/theme/team-2-800x800.jpg")}
+              src={TeamTwo}
               style={{ width: "150px" }}
             />
           </Col>
@@ -337,7 +341,7 @@ class Typography extends React.Component {
             <img
               alt="..."
               className="img-fluid rounded shadow-lg"
-              src={require("assets/img/theme/team-3-800x800.jpg")}
+              src={TeamThree}
               style={{ width: "150px" }}
             />
           </Col>
@@ -348,7 +352,7 @@ class Typography extends React.Component {
             <img
               alt="..."
               className="img-fluid rounded-circle shadow-lg"
-              src={require("assets/img/theme/team-4-800x800.jpg")}
+              src={TeamFour}
               style={{ width: "150px" }}
             />
           </Col>

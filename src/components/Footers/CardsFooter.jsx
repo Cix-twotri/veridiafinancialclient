@@ -18,6 +18,8 @@
 /*eslint-disable*/
 import React from "react";
 import { Link } from "react-router-dom";
+import Landing from "../../assets/img/theme/landing.jpg";
+import Profile from "../../assets/img/theme/profile.jpg";
 // reactstrap components
 import {
   Button,
@@ -44,7 +46,7 @@ class CardsFooter extends React.Component {
                   <Link to="/landing-page">
                     <CardImg
                       alt="..."
-                      src={require("assets/img/theme/landing.jpg")}
+                      src={Landing}
                     />
                   </Link>
                 </Card>
@@ -54,7 +56,7 @@ class CardsFooter extends React.Component {
                   <Link to="/profile-page">
                     <CardImg
                       alt="..."
-                      src={require("assets/img/theme/profile.jpg")}
+                      src={Profile}
                     />
                   </Link>
                 </Card>

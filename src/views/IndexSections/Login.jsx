@@ -19,7 +19,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 // nodejs library that concatenates classes
 import classnames from "classnames";
-
+import Google from "../../assets/img/icons/common/google.svg";
 // reactstrap components
 import {
   Button,
@@ -95,13 +95,6 @@ class Login extends React.Component {
                           href="#pablo"
                           onClick={(e) => e.preventDefault()}
                         >
-                          <span className="btn-inner--icon mr-1">
-                            <img
-                              alt="..."
-                              src={require("assets/img/icons/common/github.svg")}
-                            />
-                          </span>
-                          <span className="btn-inner--text">Github</span>
                         </Button>
                         <Button
                           className="btn-neutral btn-icon"
@@ -112,7 +105,7 @@ class Login extends React.Component {
                           <span className="btn-inner--icon mr-1">
                             <img
                               alt="..."
-                              src={require("assets/img/icons/common/google.svg")}
+                              src={Google}
                             />
                           </span>
                           <span className="btn-inner--text">Google</span>

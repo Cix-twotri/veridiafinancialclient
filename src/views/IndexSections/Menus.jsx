@@ -17,6 +17,8 @@
 */
 import React from "react";
 import { Link } from "react-router-dom";
+import Argon from "../../assets/img/brand/argon-react.png";
+import Google from "../../assets/img/icons/common/google.svg";
 
 // reactstrap components
 import {
@@ -68,7 +70,7 @@ class Menus extends React.Component {
                             <Link to="/">
                               <img
                                 alt="..."
-                                src={require("assets/img/brand/argon-react.png")}
+                                src={Argon}
                               />
                             </Link>
                           </Col>
@@ -157,7 +159,7 @@ class Menus extends React.Component {
                             <Link to="/">
                               <img
                                 alt="..."
-                                src={require("assets/img/brand/argon-react.png")}
+                                src={Argon}
                               />
                             </Link>
                           </Col>

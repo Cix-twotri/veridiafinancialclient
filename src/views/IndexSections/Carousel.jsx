@@ -16,19 +16,21 @@
 
 */
 import React from "react";
+import ImageOne from "../../assets/img/theme/img-1-1200x1000.jpg";
+import ImageTwo from "../../assets/img/theme/img-2-1200x1000.jpg";
 
 // reactstrap components
 import { Button, Container, Row, Col, UncontrolledCarousel } from "reactstrap";
 
 const items = [
   {
-    src: require("assets/img/theme/img-1-1200x1000.jpg"),
+    src: ImageOne,
     altText: "",
     caption: "",
     header: "",
   },
   {
-    src: require("assets/img/theme/img-2-1200x1000.jpg"),
+    src:ImageTwo,
     altText: "",
     caption: "",
     header: "",

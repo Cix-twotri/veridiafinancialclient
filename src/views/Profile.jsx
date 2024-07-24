@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Card, Container, Row, Col } from "reactstrap";
+import Team4 from "../../assets/img/theme/team-4-800x800.jpg";
 
 // core components
 import SimpleFooter from "../components/Footers/SimpleFooter.jsx";
@@ -53,7 +54,7 @@ class Profile extends React.Component {
                           <img
                             alt="..."
                             className="rounded-circle"
-                            src={require("assets/img/theme/team-4-800x800.jpg")}
+                            src={Team4}
                           />
                         </a>
                       </div>
