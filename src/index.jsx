@@ -9,7 +9,7 @@ root.render(
   <React.StrictMode>
     <AuthContextProvider>
       <ChakraProvider>
-      <Route path="/" element={<App />} />
+        <App />
       </ChakraProvider>
     </AuthContextProvider>
   </React.StrictMode>
