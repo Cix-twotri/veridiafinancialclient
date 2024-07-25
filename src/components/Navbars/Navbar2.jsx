@@ -158,7 +158,7 @@ class DemoNavbar extends React.Component {
                       className="nav-link-icon"
                      
                       id="tooltip112445449"
-                      target="_blank"
+                        target="_blank"
                     >
                       <i className="fa fa-github" />
                       <span className="nav-link-inner--text d-lg-none ml-2">

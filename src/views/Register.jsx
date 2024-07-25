@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useRef, useState } from "react";
 
 // reactstrap components
@@ -43,7 +44,7 @@ const Register = () => {
   useEffect(() => {
     const fetchBranches = async () => {
       try {
-        const res = await axios.get("https://veridianfinancial-5b09422bf567.herokuapp.com//branches"); // Endpoint to fetch branches
+        const res = await axios.get("https://sql10.freesqldatabase.com3306/sql10721950/branches"); 
       } catch (err) {
         console.error(err);
       }
@@ -58,7 +59,7 @@ const Register = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://veridianfinancial-5b09422bf567.herokuapp.com//api/auth/register", inputs);
+      await axios.post("https://sql10.freesqldatabase.com3306/sql10721950/api/auth/register", inputs);
       navigate("/login");
     } catch (err) {
       setErr(err.response.data);
@@ -96,7 +97,7 @@ const Register = () => {
                   <div className="text-muted text-center mb-3">
                     <small>Smart Banking</small>
                   </div>
-                  <CardHeader className="bg-white pb-5">
+                  <CardHeader className="bg-white pb-5">                            
                     <Image src={VeridienLogo} alt="Veridian Logo" />
                   </CardHeader>
                   <CardBody className="px-lg-5 py-lg-5">
