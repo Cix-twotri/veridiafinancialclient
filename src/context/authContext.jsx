@@ -9,11 +9,15 @@ export const AuthContextProvider = ({ children }) => {
   );
 
   const login = async (inputs) => {
-    const res = await axios.post("http://localhost:8800/api/auth/login", inputs, {
-      withCredentials: true,
-    });
-
-    setCurrentUser(res.data)
+    try {
+      const res = await axios.post("http://localhost:5000/api/auth/login", inputs, {
+        withCredentials: true, // Ensure credentials are sent with the request
+      });
+      setCurrentUser(res.data);
+    } catch (err) {
+      console.error("Login failed:", err); // Add error handling
+      throw err; // Rethrow the error so it can be caught in the component
+    }
   };
 
   useEffect(() => {

@@ -22,6 +22,8 @@ import { Button, Container, Row, Col } from "reactstrap";
 import OpeDoor from "../../assets/img/icons/opeDoor.png";
 import Rocket from "../../assets/img/icons/rocket.png";
 import { Link } from "react-router-dom";
+import ArgonWhite from "../../assets/img/brand/argon-react-white.png";
+import Creativetim from "../../assets/img/brand/creativetim-white-slim.png";
 
 class Hero extends React.Component {
   render() {

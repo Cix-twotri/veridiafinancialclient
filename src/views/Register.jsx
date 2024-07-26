@@ -44,7 +44,7 @@ const Register = () => {
   useEffect(() => {
     const fetchBranches = async () => {
       try {
-        const res = await axios.get("https://sql10.freesqldatabase.com3306/sql10721950/branches"); 
+        const res = await axios.get("http://localhost:5000/api/branches");
       } catch (err) {
         console.error(err);
       }
@@ -59,7 +59,7 @@ const Register = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://sql10.freesqldatabase.com3306/sql10721950/api/auth/register", inputs);
+      await axios.post("http://localhost:5000/api/auth/register", inputs);
       navigate("/login");
     } catch (err) {
       setErr(err.response.data);
