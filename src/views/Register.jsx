@@ -25,11 +25,14 @@ import VeridienLogo from "../assets/img/brand/argon-react.png";
 import styled from "styled-components";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-
 const Image = styled.img`
   width: 200px;
   height: 50px;
 `;
+
+const axiosInstance = axios.create({
+  baseURL: process.env.REACT_APP_API_URL, // Fixed typo here
+});
 
 const Register = () => {
   const [inputs, setInputs] = useState({
@@ -38,18 +41,22 @@ const Register = () => {
     password: "",
     name: "",
   });
+  const [branches, setBranches] = useState([]); // Add state for branches
   const [err, setErr] = useState(null);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBranches = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/branches");
+        const res = await axiosInstance.get("/api/branches"); // Use the relative URL
+        setBranches(res.data); // Update state with the fetched data
       } catch (err) {
+        setErr(err.message); // Update error state with error message
         console.error(err);
       }
     };
-    fetchBranches();
+
+    fetchBranches(); // Call the function
   }, []);
 
   const handleChange = (e) => {
@@ -59,7 +66,7 @@ const Register = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/auth/register", inputs);
+      await axiosInstance.post("/api/auth/register", inputs);
       navigate("/login");
     } catch (err) {
       setErr(err.response.data);
@@ -97,7 +104,7 @@ const Register = () => {
                   <div className="text-muted text-center mb-3">
                     <small>Smart Banking</small>
                   </div>
-                  <CardHeader className="bg-white pb-5">                            
+                  <CardHeader className="bg-white pb-5">
                     <Image src={VeridienLogo} alt="Veridian Logo" />
                   </CardHeader>
                   <CardBody className="px-lg-5 py-lg-5">
@@ -197,7 +204,12 @@ const Register = () => {
                         </Col>
                       </Row>
                       <div className="text-center">
-                        <Button className="mt-4" color="primary" type="button" onClick={handleClick}>
+                        <Button
+                          className="mt-4"
+                          color="primary"
+                          type="button"
+                          onClick={handleClick}
+                        >
                           Create account
                         </Button>
                       </div>
