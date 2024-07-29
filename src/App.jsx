@@ -1,6 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { useContext } from "react";
 import "@/assets/vendor/nucleo/css/nucleo.css";
@@ -13,7 +12,6 @@ import Register from "@/views/Register.jsx";
 import About from "@/views/About.jsx";
 import Dashboard from "@/views/Dashboard.jsx";
 import Deposit from "@/views/Deposit";
-import DomesticTransfer from "@/views/DomesticTransfer.jsx";
 import Transfer from "@/views/Transfer.jsx";
 import Withdraw from "@/views/Withdraw.jsx";
 import { AuthContext } from "@/context/authContext.jsx";
@@ -25,7 +23,6 @@ function App() {
   const { currentUser } = useContext(AuthContext);
 
   const queryClient = new QueryClient();
-  const root = ReactDOM.createRoot(document.getElementById("root"));
 
   const Layout = () => {
     return (
@@ -42,9 +39,8 @@ function App() {
 
   const ProtectedRoute = ({ children }) => {
     if (!currentUser) {
-      return <Navigate to="/login" />;
+      return <Navigate to="/landing" />;
     }
-
     return children;
   };
 
@@ -53,7 +49,7 @@ function App() {
       path: "/",
       element: (
         <ProtectedRoute>
-          <Layout />
+          <Landing />
         </ProtectedRoute>
       ),
       children: [
@@ -85,14 +81,10 @@ function App() {
           path: "/withdraw",
           element: <Withdraw />,
         },
-        {
-          path: "*",
-          element: <Navigate to="/" replace />,
-        },
       ],
     },
     {
-      path: "/",
+      path: "/landing",
       element: <Landing />,
     },
     {

@@ -67,6 +67,7 @@ const DemoNavbar = () => {
 
   return (
     <>
+    <Navbar />
       <header className="header-global">
         <Navbar
           className="navbar-main navbar-transparent navbar-light headroom"

@@ -89,6 +89,7 @@ class Landing extends React.Component {
   render() {
     return (
       <>
+		<Navbar />
         <main ref="main">
           <Hero />
           <section className="section section-lg pt-lg-0 mt--200">

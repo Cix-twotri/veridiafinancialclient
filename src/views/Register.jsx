@@ -30,9 +30,6 @@ const Image = styled.img`
   height: 50px;
 `;
 
-const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL, // Fixed typo here
-});
 
 const Register = () => {
   const [inputs, setInputs] = useState({
@@ -48,15 +45,13 @@ const Register = () => {
   useEffect(() => {
     const fetchBranches = async () => {
       try {
-        const res = await axiosInstance.get("/api/branches"); // Use the relative URL
-        setBranches(res.data); // Update state with the fetched data
+        const res = await axios.get("http://localhost:8800/api/branches"); // Endpoint to fetch branches
+        setBranches(res.data);
       } catch (err) {
-        setErr(err.message); // Update error state with error message
         console.error(err);
       }
     };
-
-    fetchBranches(); // Call the function
+    fetchBranches();
   }, []);
 
   const handleChange = (e) => {
@@ -66,7 +61,7 @@ const Register = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axiosInstance.post("/api/auth/register", inputs);
+      await axios.post("http://localhost:8800/api/auth/register", inputs);
       navigate("/login");
     } catch (err) {
       setErr(err.response.data);

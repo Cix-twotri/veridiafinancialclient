@@ -8,21 +8,12 @@ export const AuthContextProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("user")) || null
   );
 
-  
-  const axiosInstance = axios.create({
-    baseURL: process.env.REACT_APP_API_URL, // Fixed typo here
-  });
-
   const login = async (inputs) => {
-    try {
-      const res = await axiosInstance.post("/api/auth/login", inputs, {
-        withCredentials: true, // Ensure credentials are sent with the request
-      });
-      setCurrentUser(res.data);
-    } catch (err) {
-      console.error("Login failed:", err); // Add error handling
-      throw err; // Rethrow the error so it can be caught in the component
-    }
+    const res = await axios.post("http://localhost:8800/api/auth/login", inputs, {
+      withCredentials: true,
+    });
+
+    setCurrentUser(res.data)
   };
 
   useEffect(() => {
