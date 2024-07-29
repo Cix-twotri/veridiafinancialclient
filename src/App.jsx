@@ -58,10 +58,6 @@ function App() {
       ),
       children: [
         {
-          path: "/",
-          element: <Landing />,
-        },
-        {
           path: "/profile/:id",
           element: <Profile />,
         },
