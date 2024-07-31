@@ -128,7 +128,7 @@ class CardsFooter extends React.Component {
                     href="https://www.creative-tim.com?ref=adsr-footer"
                     target="_blank"
                   >
-                    Veridia Financial
+                    Veridian Financial
                   </a>
                   .
                 </div>
@@ -140,7 +140,7 @@ class CardsFooter extends React.Component {
                       href="https://www.creative-tim.com?ref=adsr-footer"
                       target="_blank"
                     >
-                      Veridia Financial
+                      Veridian Financial
                     </NavLink>
                   </NavItem>
                   <NavItem>

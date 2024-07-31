@@ -6,6 +6,7 @@ import "@/assets/vendor/nucleo/css/nucleo.css";
 import "@/assets/vendor/font-awesome/css/font-awesome.min.css";
 import "@/assets/scss/argon-design-system-react.scss?v1.1.0";
 import Landing from "@/views/Landing.jsx";
+import Home from "./views/Home.jsx";
 import Login from "@/views/Login.jsx";
 import Profile from "@/views/Profile.jsx";
 import Register from "@/views/Register.jsx";
@@ -49,7 +50,7 @@ function App() {
       path: "/",
       element: (
         <ProtectedRoute>
-          <Landing />
+          <Home />
         </ProtectedRoute>
       ),
       children: [
@@ -85,7 +86,7 @@ function App() {
     },
     {
       path: "/landing",
-      element: <Landing />,
+      element: <Home />,
     },
     {
       path: "/login",

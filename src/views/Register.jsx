@@ -25,6 +25,11 @@ import VeridienLogo from "../assets/img/brand/argon-react.png";
 import styled from "styled-components";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "../SupabaseClient.js";
+import { createClient } from "@supabase/supabase-js";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
+import { Auth } from "@supabase/auth-ui-react";
+
 const Image = styled.img`
   width: 200px;
   height: 50px;
@@ -33,40 +38,18 @@ const Image = styled.img`
 
 const Register = () => {
   const [inputs, setInputs] = useState({
-    username: "",
     email: "",
     password: "",
-    name: "",
+    fullname: "",
   });
-  const [branches, setBranches] = useState([]); // Add state for branches
+
   const [err, setErr] = useState(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchBranches = async () => {
-      try {
-        const res = await axios.get("http://localhost:8800/api/branches"); // Endpoint to fetch branches
-        setBranches(res.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchBranches();
-  }, []);
 
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleClick = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post("http://localhost:8800/api/auth/register", inputs);
-      navigate("/login");
-    } catch (err) {
-      setErr(err.response.data);
-    }
-  };
   const mainRef = useRef(null);
 
   useEffect(() => {
@@ -76,6 +59,24 @@ const Register = () => {
       mainRef.current.scrollTop = 0;
     }
   }, []);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email: inputs.email,
+        password: inputs.password,
+        options: {
+          data: {
+            full_name: inputs.fullname,
+          },
+        },
+      });
+      alert("Check your email for verification link");
+    } catch (error) {
+      alert(error);
+    }
+  }
 
   return (
     <>
@@ -97,118 +98,16 @@ const Register = () => {
               <Col lg="5">
                 <Card className="bg-secondary shadow border-0">
                   <div className="text-muted text-center mb-3">
-                    <small>Smart Banking</small>
+                    <small>Veridan Finincial</small>
                   </div>
                   <CardHeader className="bg-white pb-5">
                     <Image src={VeridienLogo} alt="Veridian Logo" />
                   </CardHeader>
                   <CardBody className="px-lg-5 py-lg-5">
-                    <Form role="form">
-                      <FormGroup>
-                        <InputGroup className="input-group-alternative mb-3">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-hat-3" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input
-                            type="text"
-                            placeholder="Username"
-                            name="username"
-                            onChange={handleChange}
-                          />
-                        </InputGroup>
-                      </FormGroup>
-                      <FormGroup>
-                        <InputGroup className="input-group-alternative mb-3">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-hat-3" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input
-                            type="text"
-                            placeholder="Name"
-                            name="name"
-                            onChange={handleChange}
-                          />
-                        </InputGroup>
-                      </FormGroup>
-                      <FormGroup>
-                        <InputGroup className="input-group-alternative mb-3">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-email-83" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input
-                            type="email"
-                            placeholder="Email"
-                            name="email"
-                            onChange={handleChange}
-                          />
-                        </InputGroup>
-                      </FormGroup>
-                      <FormGroup>
-                        <InputGroup className="input-group-alternative">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-lock-circle-open" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input
-                            type="password"
-                            placeholder="Password"
-                            name="password"
-                            onChange={handleChange}
-                            autoComplete="off"
-                          />
-                        </InputGroup>
-                      </FormGroup>
-                      <div className="text-muted font-italic">
-                        <small>
-                          password strength:{" "}
-                          <span className="text-success font-weight-700">
-                            strong
-                          </span>
-                        </small>
-                      </div>
-                      <Row className="my-4">
-                        <Col xs="12">
-                          <div className="custom-control custom-control-alternative custom-checkbox">
-                            <input
-                              className="custom-control-input"
-                              id="customCheckRegister"
-                              type="checkbox"
-                            />
-                            <label
-                              className="custom-control-label"
-                              htmlFor="customCheckRegister"
-                            >
-                              <span>
-                                I agree with the{" "}
-                                <a
-                                  href="#pablo"
-                                  onClick={(e) => e.preventDefault()}
-                                >
-                                  Privacy Policy
-                                </a>
-                              </span>
-                            </label>
-                          </div>
-                        </Col>
-                      </Row>
-                      <div className="text-center">
-                        <Button
-                          className="mt-4"
-                          color="primary"
-                          type="button"
-                          onClick={handleClick}
-                        >
-                          Create account
-                        </Button>
-                      </div>
-                    </Form>
+                    <Auth
+                      supabaseClient={supabase}
+                      appearance={{ theme: ThemeSupa }}
+                    />
                   </CardBody>
                 </Card>
               </Col>

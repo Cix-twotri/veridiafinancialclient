@@ -1,53 +1,67 @@
+import React, { useEffect, useRef, useState } from "react";
+import {
+  Input,
+  FormGroup,
+  Button,
+  Container,
+  Row,
+  Col,
+  Badge,
+  CardImg,
+} from "reactstrap";
+import {
+  MainCont,
+  YourBalanceIcon,
+  YourBalanceAmount,
+  YourBalance,
+  IconYourBalance,
+  DepositCont,
+  Deposittext,
+  Subcont,
+  DepositSubCont,
+  ArrowUpdown,
+  Chooseyouamount,
+  AmountboxCont,
+  Amountbox,
+  EnterAmount,
+} from "../styles/Home.styles";
 
-import React from "react";
-import OnlinePayment from "../assets/img/icons/onlinePayment.png";
-import CreditCard from "../assets/img/icons/creditCard.png";
+import OnlinePayment from "../assets/img/icons/creditCard.png";
+import CreditCardPng from "../assets/img/icons/onlinePayment.png";
 import Security from "../assets/img/icons/security.png";
 import AwesomeImg from "../assets/img/icons/awesome.png";
 import Team from "../assets/img/icons/team.jpg";
 import Tree from "../assets/img/icons/tree.png";
 import Restaurant from "../assets/img/icons/restaurant.png";
 import Team1 from "../assets/img/icons/team1.jpg";
-import Home from "../assets/img/icons/home.png";
 import Water from "../assets/img/icons/water.png";
+import HomePng from "../assets/img/icons/home.png";
 import SvgOne from "../assets/img/ill/ill-2.svg";
 import Bankrate from "../assets/img/ill/bankrate.svg";
 import Nerdwallet from "../assets/img/ill/nerdwallet.svg";
 import Smartasset from "../assets/img/ill/smartasset.svg";
-import Usnews from "../assets/img/ill/usnews.svg";
-import styled from "styled-components";
 
-// nodejs library that concatenates classes
-import classnames from "classnames";
-
-// reactstrap components
+import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
+import { IoIosArrowDown } from "react-icons/io";
+import { Link } from "react-router-dom";
+import CreditCard from "../components/creditCard/CredidCard";
+import ArrowUpdownImg from "../assets/img/icons/arrowUpdown.png";
+import Hero from "../views/IndexSections/Hero.jsx";
+import Navbar2 from "../components/Navbars/Navbar2.jsx";
 import {
-  Badge,
-  Button,
   Card,
+  CardHeader,
   CardBody,
-  CardImg,
-  FormGroup,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
-
-// core components
-import Navbar from "../components/Navbars/Navbar.jsx";
+  CardFooter,
+  SimpleGrid,
+  Heading,
+  Text,
+} from "@chakra-ui/react";
+import styled from "styled-components";
 import CardsFooter from "../components/Footers/CardsFooter.jsx";
 
-// index page sections
-import Download from "./IndexSections/Download.jsx";
-import Hero from "../views/IndexSections/Hero.jsx";
-import DemoNavbar from "../components/Navbars/Navbar.jsx";
-
 const Image = styled.img`
-  width: 200px;
+  width: 110px;
   height: 200px;
   margin-left: 30px;
 `;
@@ -60,7 +74,7 @@ const Image2 = styled.img`
 const Image3 = styled.img`
   width: 110px;
   height: 110px;
-  margin-left: 50px;
+  margin-left: 70px;
 `;
 
 const Image4 = styled.img`
@@ -80,221 +94,198 @@ const Awesome = styled.img`
   margin-left: 50px;
 `;
 
-class Landing extends React.Component {
-  state = {};
-  componentDidMount() {
+const Home = () => {
+  const [cardNumber, setCardNumber] = useState("");
+  const [cardName, setCardName] = useState("");
+  const [expiryDate, setExpiryDate] = useState("");
+  const [cvv, setCvv] = useState("");
+  const [amount, setAmount] = useState("");
+  const mainRef = useRef(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission
+    console.log({ cardNumber, cardName, expiryDate, cvv });
+  };
+
+  const handleAmountChange = (newValue) => {
+    setAmount(newValue.replace(/^\$/, ""));
+  };
+
+  const handleInputChange = (e) => {
+    const value = e.target.value.replace(/^\$/, "");
+    setAmount(value);
+  };
+
+  useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
-    this.refs.main.scrollTop = 0;
-  }
-  render() {
-    return (
-      <>
-      <Navbar />
-        <main ref="main">
-          <Hero />
-          <section className="section section-lg pt-lg-0 mt--200">
-            <Container>
-              <Row className="justify-content-center">
-                <Col lg="12">
-                  <Row className="row-grid">
-                    <Col lg="4">
-                      <Card className="card-lift--hover shadow border-0">
-                        <CardBody className="py-10">
-                          <div className=" mb-4">
-                            <Image3
-                              className="ni ni-check-bold"
-                              src={OnlinePayment}
-                              alt="Online Payment"
-                            />
-                          </div>
-                          <h6 className="text-primary text-uppercase">
-                            Digital Payment
-                          </h6>
-                          <p className="description mt-3">
-                            With our cutting-edge digital payment interfaces,
-                            managing your finances has never been easier.....
-                          </p>
-                          <div>
-                            <Badge color="primary" pill className="mr-1">
-                              Secure
-                            </Badge>
-                            <Badge color="primary" pill className="mr-1">
-                              Anytime
-                            </Badge>
-                            <Badge color="primary" pill className="mr-1">
-                              Anywhere!
-                            </Badge>
-                          </div>
-                          <Button
-                            className="mt-4"
-                            color="primary"
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            Learn more
-                          </Button>
-                        </CardBody>
-                      </Card>
-                    </Col>
-                    <Col lg="4">
-                      <Card className="card-lift--hover shadow border-0">
-                        <CardBody className="py-18">
-                          <div className="mb-4">
-                            <Image
-                              className="ni ni-check-bold"
-                              src={CreditCard}
-                              alt="Online Payment"
-                            />
-                          </div>
-                          <h6 className="text-success text-uppercase">
-                            Loans & Credit Card
-                          </h6>
-                          <p className="description mt-3">
-                            At Veridia Financial, we understand that life’s
-                            milestones demand financial support. Our loans
-                            empower you
-                          </p>
-                          <div>
-                            <Badge color="success" pill className="mr-1">
-                              Solutions
-                            </Badge>
-                            <Badge color="success" pill className="mr-1">
-                              Rates
-                            </Badge>
-                            <Badge color="success" pill className="mr-1">
-                              Loans
-                            </Badge>
-                          </div>
-                          <Button
-                            className="mt-4"
-                            color="success"
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            Learn more
-                          </Button>
-                        </CardBody>
-                      </Card>
-                    </Col>
-                    <Col lg="4">
-                      <Card className="card-lift--hover shadow border-0">
-                        <CardBody className="py-10">
-                          <div className=" mb-4">
-                            <Image3
-                              className="ni ni-planet"
-                              src={Security}
-                              alt="Online Payment"
-                            />
-                          </div>
-                          <h6 className="text-warning text-uppercase">
-                            Security
-                          </h6>
-                          <p className="description mt-3">
-                            We safeguards your assets as our top priority with
-                            our real-time fraud monitoring.....
-                          </p>
-                          <div>
-                            <Badge color="warning" pill className="mr-1">
-                              Online
-                            </Badge>
-                            <Badge color="warning" pill className="mr-1">
-                              Services
-                            </Badge>
-                            <Badge color="warning" pill className="mr-1">
-                              Management
-                            </Badge>
-                          </div>
-                          <Button
-                            className="mt-4"
-                            color="warning"
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            Learn more
-                          </Button>
-                        </CardBody>
-                      </Card>
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-            </Container>
-          </section>
-          <section className="section section-lg">
-            <Container>
-              <Row className="row-grid align-items-center">
-                <Col className="order-md-2" md="6">
-                  <Image4 alt="..." className="img-fluid floating" src={Team} />
-                </Col>
-                <Col className="order-md-1" md="6">
-                  <div className="pr-md-5">
-                    <div className="icon icon-lg icon-shape icon-shape-success shadow rounded-circle mb-5">
-                      <Awesome
-                        src={AwesomeImg}
-                        alt="Awesome Image"
-                        className="ni ni-settings-gear-65"
-                      />
-                    </div>
-                    <h3>Awesome features</h3>
-                    <p>
-                      Bank confidently with Veridia Financial—secure, intuitive,
-                      and globally accessible!
-                    </p>
-                    <ul className="list-unstyled mt-5">
-                      <li className="py-2">
-                        <div className="d-flex align-items-center">
-                          <div>
-                            <Badge
-                              className="badge-circle mr-3"
-                              color="success"
-                            >
-                              <i className="ni ni-settings-gear-65" />
-                            </Badge>
-                          </div>
-                          <div>
-                            <h6 className="mb-0">Instant Account Setup</h6>
-                          </div>
-                        </div>
-                      </li>
-                      <li className="py-2">
-                        <div className="d-flex align-items-center">
-                          <div>
-                            <Badge
-                              className="badge-circle mr-3"
-                              color="success"
-                            >
-                              <i className="ni ni-html5" />
-                            </Badge>
-                          </div>
-                          <div>
-                            <h6 className="mb-0">Smart Budgeting Tool</h6>
-                          </div>
-                        </div>
-                      </li>
-                      <li className="py-2">
-                        <div className="d-flex align-items-center">
-                          <div>
-                            <Badge
-                              className="badge-circle mr-3"
-                              color="success"
-                            >
-                              <i className="ni ni-satisfied" />
-                            </Badge>
-                          </div>
-                          <div>
-                            <h6 className="mb-0">
-                              Super friendly support team
-                            </h6>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
+    if (mainRef.current) {
+      mainRef.current.scrollTop = 0;
+    }
+  }, []);
+
+  return (
+    <>
+      <Navbar2 />
+      <main className="profile-page" ref={mainRef}>
+        <Hero />
+        <section className="section-profile-cover section-shaped my-0">
+          <div className="shape shape-style-1 shape-default alpha-4">
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
+          <div className="separator separator-bottom separator-skew">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+              version="1.1"
+              viewBox="0 0 2560 100"
+              x="0"
+              y="0"
+            >
+              <polygon className="fill-white" points="2560 0 2560 100 0 100" />
+            </svg>
+          </div>
+        </section>
+
+        <MainCont>
+          <SimpleGrid
+            spacing={4}
+            templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
+          >
+            <Card>
+              <CardHeader>
+                <div className=" mb-4">
+                  <Image3
+                    className="ni ni-check-bold"
+                    src={OnlinePayment}
+                    alt="Online Payment"
+                  />
+                </div>
+                <Heading size="md"> Digital Payment</Heading>
+              </CardHeader>
+              <CardBody>
+                <Text>
+                  With our cutting-edge digital payment interfaces, managing
+                  your finances has never been easier.....
+                </Text>
+              </CardBody>
+              <CardFooter>
+                <Button>View here</Button>
+              </CardFooter>
+            </Card>
+            <Card>
+              <CardHeader>
+                <div className="mb-4">
+                  <Image
+                    className="ni ni-check-bold"
+                    src={CreditCardPng}
+                    alt="Online Payment"
+                  />
+                </div>
+                <Heading size="md"> Loans & Credit Card</Heading>
+              </CardHeader>
+              <CardBody>
+                <Text>
+                  At Veridian Financial, we understand that life’s milestones
+                  demand financial support. Our loans empower you
+                </Text>
+              </CardBody>
+              <CardFooter>
+                <Button>View here</Button>
+              </CardFooter>
+            </Card>
+            <Card>
+              <CardHeader>
+                <div className=" mb-4">
+                  <Image3
+                    className="ni ni-planet"
+                    src={Security}
+                    alt="Online Payment"
+                  />
+                </div>
+                <Heading size="md">Security</Heading>
+              </CardHeader>
+              <CardBody>
+                <Text>
+                  We safeguards your assets as our top priority with our
+                  real-time fraud monitoring.....
+                </Text>
+              </CardBody>
+              <CardFooter>
+                <Button>View here</Button>
+              </CardFooter>
+            </Card>
+          </SimpleGrid>
+
+          <Container>
+            <Row className="row-grid align-items-center">
+              <Col className="order-md-2" md="6">
+                <Image4 alt="..." className="img-fluid floating" src={Team} />
+              </Col>
+              <Col className="order-md-1" md="6">
+                <div className="pr-md-5">
+                  <div className="icon icon-lg icon-shape icon-shape-success shadow rounded-circle mb-5">
+                    <Awesome
+                      src={AwesomeImg}
+                      alt="Awesome Image"
+                      className="ni ni-settings-gear-65"
+                    />
                   </div>
-                </Col>
-              </Row>
-            </Container>
-          </section>
+                  <h3>Awesome features</h3>
+                  <p>
+                    Bank confidently with Veridian Financial—secure, intuitive,
+                    and globally accessible!
+                  </p>
+                  <ul className="list-unstyled mt-5">
+                    <li className="py-2">
+                      <div className="d-flex align-items-center">
+                        <div>
+                          <Badge className="badge-circle mr-3" color="success">
+                            <i className="ni ni-settings-gear-65" />
+                          </Badge>
+                        </div>
+                        <div>
+                          <h6 className="mb-0">Instant Account Setup</h6>
+                        </div>
+                      </div>
+                    </li>
+                    <li className="py-2">
+                      <div className="d-flex align-items-center">
+                        <div>
+                          <Badge className="badge-circle mr-3" color="success">
+                            <i className="ni ni-html5" />
+                          </Badge>
+                        </div>
+                        <div>
+                          <h6 className="mb-0">Smart Budgeting Tool</h6>
+                        </div>
+                      </div>
+                    </li>
+                    <li className="py-2">
+                      <div className="d-flex align-items-center">
+                        <div>
+                          <Badge className="badge-circle mr-3" color="success">
+                            <i className="ni ni-satisfied" />
+                          </Badge>
+                        </div>
+                        <div>
+                          <h6 className="mb-0">Super friendly support team</h6>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+
           <section className="section bg-secondary">
             <Container>
               <Row className="row-grid align-items-center">
@@ -341,8 +332,8 @@ class Landing extends React.Component {
                       innovation, and your financial well-being.
                     </p>
                     <p>
-                      Veridia Financial is raising the bar. If you’ve found your
-                      way to Veridia Financial for our highly competitive rates
+                      Veridian Financial is raising the bar. If you’ve found your
+                      way to Veridian Financial for our highly competitive rates
                       and easy-to-use online banking
                     </p>
                     <p>
@@ -363,6 +354,7 @@ class Landing extends React.Component {
               </Row>
             </Container>
           </section>
+
           <section className="section pb-0 bg-gradient-warning">
             <Container>
               <Row className="row-grid align-items-center">
@@ -387,7 +379,7 @@ class Landing extends React.Component {
                         Friendly Interface
                       </h4>
                       <p className="text-white">
-                        Veridia Financial’s user-friendly interface ensures
+                        Veridian Financial’s user-friendly interface ensures
                         effortless navigation, making banking a delightful
                         experience for all our customers
                       </p>
@@ -406,7 +398,7 @@ class Landing extends React.Component {
                             Awesome Support
                           </h5>
                           <p>
-                            Veridian Financial: Our friendly support team is
+                            Veridiann Financial: Our friendly support team is
                             here 24/7, ready to assist you with any banking
                             needs. Your satisfaction is our priority!” 🌟🤝
                           </p>
@@ -434,7 +426,7 @@ class Landing extends React.Component {
                             Modular Banking
                           </h5>
                           <p>
-                            Veridia Financial: Tailor your banking experience
+                            Veridian Financial: Tailor your banking experience
                             with our modular approach—choose the services you
                             need, seamlessly integrated for personalized
                             financial solutions.
@@ -470,6 +462,7 @@ class Landing extends React.Component {
               </svg>
             </div>
           </section>
+
           <section className="section section-lg">
             <Container>
               <Row className="justify-content-center text-center mb-lg">
@@ -478,7 +471,7 @@ class Landing extends React.Component {
                     Community Roots & National Impact
                   </h2>
                   <p className="lead text-muted">
-                    At Veridia Financial, we aim to make an impact across the
+                    At Veridian Financial, we aim to make an impact across the
                     country and give back in the form of meals for the hungry,
                     shelter for the needy, and trees for everyone. We also honor
                     our roots as a community bank by contributing to national
@@ -622,7 +615,7 @@ class Landing extends React.Component {
                     <img
                       alt="..."
                       className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                      src={Home}
+                      src={HomePng}
                       style={{ width: "200px" }}
                     />
                     <div className="pt-4 text-center">
@@ -662,6 +655,7 @@ class Landing extends React.Component {
               </Row>
             </Container>
           </section>
+
           <section className="section section-lg pt-0">
             <Container>
               <Card className="bg-gradient-warning shadow-lg border-0">
@@ -692,6 +686,7 @@ class Landing extends React.Component {
               </Card>
             </Container>
           </section>
+
           <section className="section section-lg bg-gradient-default">
             <Container className="pt-lg pb-300">
               <Row className="text-center justify-content-center">
@@ -715,18 +710,18 @@ class Landing extends React.Component {
                   </div>
                 </Col>
                 <Col lg="4">
-                <Image5
-                      alt="..."
-                      src={Nerdwallet}
-                      style={{ width: "200px" }}
-                    />
+                  <Image5
+                    alt="..."
+                    src={Nerdwallet}
+                    style={{ width: "200px" }}
+                  />
                 </Col>
                 <Col lg="4">
-                <Image5
-                      alt="..."
-                      src={Smartasset}
-                      style={{ width: "200px" }}
-                    />
+                  <Image5
+                    alt="..."
+                    src={Smartasset}
+                    style={{ width: "200px" }}
+                  />
                 </Col>
               </Row>
             </Container>
@@ -747,94 +742,12 @@ class Landing extends React.Component {
               </svg>
             </div>
           </section>
-          <section className="section section-lg pt-lg-0 section-contact-us">
-            <Container>
-              <Row className="justify-content-center mt--300">
-                <Col lg="8">
-                  <Card className="bg-gradient-secondary shadow">
-                    <CardBody className="p-lg-5">
-                      <h4 className="mb-1">Want to work with us?</h4>
-                      <p className="mt-0">
-                        Your project is very important to us.
-                      </p>
-                      <FormGroup
-                        className={classnames("mt-5", {
-                          focused: this.state.nameFocused,
-                        })}
-                      >
-                        <InputGroup className="input-group-alternative">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-user-run" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input
-                            placeholder="Your name"
-                            type="text"
-                            onFocus={(e) =>
-                              this.setState({ nameFocused: true })
-                            }
-                            onBlur={(e) =>
-                              this.setState({ nameFocused: false })
-                            }
-                          />
-                        </InputGroup>
-                      </FormGroup>
-                      <FormGroup
-                        className={classnames({
-                          focused: this.state.emailFocused,
-                        })}
-                      >
-                        <InputGroup className="input-group-alternative">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-email-83" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input
-                            placeholder="Email address"
-                            type="email"
-                            onFocus={(e) =>
-                              this.setState({ emailFocused: true })
-                            }
-                            onBlur={(e) =>
-                              this.setState({ emailFocused: false })
-                            }
-                          />
-                        </InputGroup>
-                      </FormGroup>
-                      <FormGroup className="mb-4">
-                        <Input
-                          className="form-control-alternative"
-                          cols="80"
-                          name="name"
-                          placeholder="Type a message..."
-                          rows="4"
-                          type="textarea"
-                        />
-                      </FormGroup>
-                      <div>
-                        <Button
-                          block
-                          className="btn-round"
-                          color="default"
-                          size="lg"
-                          type="button"
-                        >
-                          Send Message
-                        </Button>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </Col>
-              </Row>
-            </Container>
-          </section>
-        </main>
-        <CardsFooter />
-      </>
-    );
-  }
-}
 
-export default Landing;
+          <CardsFooter />
+        </MainCont>
+      </main>
+    </>
+  );
+};
+
+export default Home;
